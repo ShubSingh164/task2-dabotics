@@ -1,0 +1,305 @@
+:root {
+    --body-background: rgb(239, 239, 239);
+    --max-width: 35rem;
+    font-size: 16px;
+}
+
+/* ----------- css styles ------------ */
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    font-family: 'PT Sans', serif;
+}
+
+body {
+    background: var(--body-background);
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* topbar */
+.topBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+    padding: 5px 2.5vw;
+}
+
+.topBar svg {
+    width: 2.5vh;
+    height: 2.5vh;
+    fill: rgb(140, 140, 140);
+    transition: fill 500ms;
+}
+
+.topBar svg:hover {
+    fill: rgb(71, 71, 71);
+}
+
+.signature {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2.3vh;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: rgb(140, 140, 140);
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.signature:hover {
+    text-decoration: underline;
+    color: rgb(71, 71, 71);
+}
+
+
+.calculator {
+    flex-grow: 1;
+    width: 100%;
+    max-width: var(--max-width);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 2.5vw;
+    margin: 0 auto;
+    background-color: #b2b2b2;
+    border-radius: 60px;
+}
+
+.input-area {
+    color: white;
+    position: relative;
+    background: transparent;
+    padding: 0.5rem 0.5rem 1rem;
+    width: 100%;
+    border: solid;
+    border-color: #2a2a2a;
+    border-radius: 20px;
+}
+
+ /* display fuctionality */
+#topDisplay-container {
+    position: relative;
+    width: 100%;
+    height: 4.8vh;
+    margin: 1vh 0;
+    overflow-x: auto;
+    direction: rtl;
+}
+
+#topDisplay {
+    position: absolute;
+    right: 0;
+    background: transparent;
+    color: #6c6c6c;
+    font-size: 3.5vh;
+    height: 100%;
+    margin: 0;
+    direction: initial;
+    cursor: grab;
+}
+
+#display {
+    background: transparent;
+    color: rgb(49, 49, 49);
+    width: 100%;
+    text-align: right;
+    font-size: 6vh;
+    border: 0;
+    outline: 0;
+}
+
+#exponential-container {
+    position: absolute;
+    right: 10px;
+    margin-top: 50px;
+    color: #b2b2b2;
+    font-size: 1.1rem;
+}
+
+#exponential-container.active {
+    color: whitesmoke
+}
+
+
+/* .trigonometry .functions */
+
+.trigonometry {
+    color: white;
+    font-size: 2.5vh;
+    cursor: pointer;
+    user-select: none;
+    margin: 0.6rem 0.2rem;
+}
+
+#trigonometric-mode {
+    text-transform: capitalize;
+    margin-right: 0.8rem;
+}
+
+#trigono-toggle {
+    position: relative;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+#trigonometric-container {
+    background: #2a2a2a;
+    position: absolute;
+    top: 150%;
+    width: max-content;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    box-shadow: 0 0 10px rgb(73, 73, 73);
+    z-index: 10;
+    transform: rotateX(90deg);
+    transform-origin: top;
+    transition: transform 300ms;
+    border-radius: 40px;
+}
+
+#trigonometric-container.visible {
+    display: grid;
+    transform: rotateX(0);
+}
+
+.trigono-operator {
+    text-align: center;
+    padding: 15px;
+}
+
+.trigono-operator:hover {
+    background: #3d3d3d;
+}
+
+/* button */
+
+.button-area {
+    width: 100%;
+    background: transparent;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+    border-bottom-left-radius: 10px;
+}
+
+.button {
+    color: white;
+    text-align: center;
+    font-size: 2.7vh;
+    background: #2a2a2a;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 150px;
+    user-select: none;
+    padding: 2vh 0 1.8vh;
+}
+.button-container {
+    width: 100%;
+}
+.operand{
+    background-color: rgb(183, 147, 4);
+    color: #e4e4e4;
+
+}
+.allclear{
+background-color: #ac0000;
+}
+.delete{
+background-color: #a02323;
+}
+.equal{
+    background-color: rgb(0, 106, 0);
+}
+.functions{
+    background-color: #5b5b5b;
+}
+
+
+.button.click-animation {
+    animation: clickAni 150ms linear forwards;
+}
+
+@keyframes clickAni {
+    30% {
+        transform: scale(0.9);
+        background: #3d3d3d;
+    }
+
+    80% {
+        transform: scale(1.05);
+        background: #2a2a2a;
+    }
+}
+
+.toggle-visibility {
+    display: none;
+}
+
+.toggle-visibility.visible {
+    display: inline-flex;
+}
+
+.button-pair {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 5px;
+    background: #b2b2b2;
+    padding: 0 !important;
+}
+
+.paired-button {
+    background: #5b5b5b;
+    padding: 2vh 0 1.8vh;
+}
+
+#powerButton,
+#squareBut,
+#power-1 {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+sup {
+    font-size: 0.7rem;
+    position: relative;
+    top: -5px;
+    z-index: 1;
+}
+
+sub {
+    position: relative;
+    top: 5px;
+    z-index: 1;
+}
+
+/* responsive design */
+@media screen and (min-width: 768px) {
+    :root {
+        font-size: 18px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    :root {
+        font-size: 22px;
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    :root {
+        font-size: 25px;
+    }
+}
